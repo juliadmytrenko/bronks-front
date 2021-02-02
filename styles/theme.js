@@ -5,7 +5,10 @@ import { red, orange } from '@material-ui/core/colors';
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#556cd6',
+            main: '#ffab00',
+            dark: '#212121',
+            hot: '#f50057',
+
         },
         secondary: {
             main: '#19857b',
@@ -15,9 +18,12 @@ const theme = createMuiTheme({
         },
         background: {
             default: '#fff',
+            yellow: '#ffd600'
         },
         common: {
-            orange: orange.A400
+            orange: orange.A400,
+            black: '#484848',
+            white: '#FFF',
         }
     },
 });

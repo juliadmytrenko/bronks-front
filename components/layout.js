@@ -3,13 +3,26 @@ import Link from 'next/link'
 import Header from "./header";
 import Footer from "./footer";
 import Container from "@material-ui/core/Container";
+import {makeStyles, useTheme} from '@material-ui/core/styles';
+import clsx from 'clsx';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: theme.palette.primary.dark,
+    },
+}));
+
 
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
+
 export default function Layout({ children, home }) {
+    const classes = useStyles();
+    const theme = useTheme();
+
     return (
-        <div className="container">
+        <div className={clsx('container', classes.root)}>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta

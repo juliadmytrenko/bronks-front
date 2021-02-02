@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
         '& a': {
             textDecoration: `none`,
         },
-        marginTop: theme.spacing(2),
     },
     list: {
         listStyle: "none",
