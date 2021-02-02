@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Header from "./header";
 import { CssBaseline } from "@material-ui/core"
+import Footer from "./footer";
+import Container from "@material-ui/core/Container";
 
 const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
@@ -26,17 +28,13 @@ export default function Layout({ children, home }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
 
-            <header className="header">
-                <Header home/>
-            </header>
-            <main>{children}</main>
-            {!home && (
-                <div className="backToHome">
-                    <Link href="/">
-                        <a>← Back to home</a>
-                    </Link>
-                </div>
-            )}
+            <Header home/>
+            <main>
+                <Container maxWidth="lg">
+                    {children}
+                </Container>
+            </main>
+            <Footer/>
         </div>
     )
 }
