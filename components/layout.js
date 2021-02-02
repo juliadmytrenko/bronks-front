@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Header from "./header";
-import { CssBaseline } from "@material-ui/core"
 import Footer from "./footer";
 import Container from "@material-ui/core/Container";
 
@@ -11,7 +10,6 @@ export const siteTitle = 'Next.js Sample Website'
 export default function Layout({ children, home }) {
     return (
         <div className="container">
-            <CssBaseline />
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta

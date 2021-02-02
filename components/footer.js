@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         width: `100%`,
         height: `-webkit-fill-available`,
         position: `absolute`,
-        // backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.main,
         paddingTop: theme.spacing(3),
         '& a': {
             textDecoration: `none`,
