@@ -28,8 +28,8 @@ export default function Beverages() {
 
     return (
         <div className={classes.root}>
-                {tileData.map((tile) => (
-                    <Tile tile={tile} />
+                {tileData.map((tile, index) => (
+                    <Tile key={index} tile={tile} />
                 ))}
         </div>
     );

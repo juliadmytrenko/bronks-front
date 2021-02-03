@@ -1,14 +1,13 @@
-import Layout, {siteTitle} from "../components/layout";
-import Link from 'next/link'
-import Date from '../components/date'
+import Layout from "../components/layout";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import {getAllBeverages} from "../lib/beverages";
+import {getBeverageData} from "../lib/beverages";
 import Beverages from "../components/beverages";
 
 export async function getStaticProps() {
-    const beverages = await getAllBeverages();
+    // const beverages = await getAllBeverages();
+    const beverages = await getBeverageData();
+    console.log(beverages);
 
     return {
         props: {
@@ -17,10 +16,12 @@ export async function getStaticProps() {
     }
 }
 
-export default function Home({ beverages }) {
+export default function Home({beverages}) {
+    console.log(beverages);
+
     return (
         <Layout home>
-            <section >
+            <section>
                 <Grid item xs={12} spacing={1}>
                     <Box paddingBottom={1}>
                         <Beverages/>

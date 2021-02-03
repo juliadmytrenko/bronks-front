@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ButtonAppBar() {
+interface HeaderProps {
+    home?: boolean
+}
+
+export default function Header(props: HeaderProps) {
     const classes = useStyles();
 
     return (

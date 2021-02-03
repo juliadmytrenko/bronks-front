@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { getAllBeveragesIds, getBeverageData } from '../../lib/posts'
 import Layout from "../../components/layout";
 import Date from '../../components/date'
 

@@ -1,30 +1,30 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Header from "./header";
 import Footer from "./footer";
 import Container from "@material-ui/core/Container";
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles, Theme } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import React from "react";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
     root: {
         backgroundColor: theme.palette.primary.dark,
     },
 }));
 
-
-const name = 'Your Name'
 export const siteTitle = 'Next.js Sample Website'
 
+interface LayoutProps {
+    children: React.ReactNode
+    home?: boolean
+}
 
-export default function Layout({ children, home }) {
+export default function Layout(props : LayoutProps) {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <div className={clsx('container', classes.root)}>
             <Head>
-                <link rel="icon" href="/favicon.ico" />
                 <meta
                     name="description"
                     content="Learn how to build a personal website using Next.js"
@@ -35,14 +35,14 @@ export default function Layout({ children, home }) {
                         siteTitle
                     )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
                 />
-                <meta name="og:title" content={siteTitle} />
-                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="og:title" content={siteTitle}/>
+                <meta name="twitter:card" content="summary_large_image"/>
             </Head>
 
-            <Header home/>
+            <Header home={props.home}/>
             <main>
                 <Container maxWidth="lg">
-                    {children}
+                    {props.children}
                 </Container>
             </main>
             <Footer/>
