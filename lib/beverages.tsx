@@ -1,32 +1,47 @@
-import { prisma } from './prisma';
-// import { PrismaClient } from '@prisma/client'
-// const prisma = new PrismaClient()
-
-// import { PrismaClient } from "@prisma/client";
-//
-// const prisma = new PrismaClient();
-
-// const endpoint = "https://api.punkapi.com/v2/";
-//
-// export const getAllBeverages = async () => {
-//     const res = await fetch(endpoint);
-//     const data = await res.json();
-//
-//     if (!data) {
-//         return {
-//             notFound: true,
-//         }
-//     }
-//
-//     return data;
-// }
+import {prisma} from './prisma';
 
 
+export const getBeverage = async (id: number) => {
+    const res = await prisma.beverage.findUnique({
+        where: {
+            id: id,
+        },
+    })
+    const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
+
+    if (!data) {
+        return {
+            notFound: true,
+        }
+    }
+
+    return data;
+}
 
 
-export function getAllBeveragesIds() {
-    // id u mnie to slug
-    // const slugs = QUERY
+export const getAllBeverages = async () => {
+    const res = await prisma.beverage.findMany();
+    const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
+
+    if (!data) {
+        return {
+            notFound: true,
+        }
+    }
+
+    return data;
+}
+
+
+export const getAllBeveragesIds = async () => {
+    // params.id will be a slug
+    const res = await prisma.beverage.findMany({
+        select: {
+            slug: true,
+        }
+    });
+
+    const slugs = await JSON.parse(JSON.stringify(res));
 
     // Returns an array that looks like this:
     // [
@@ -41,30 +56,12 @@ export function getAllBeveragesIds() {
     //     }
     //   }
     // ]
-    // return slugs.map(slug => {
-    //     return {
-    //         params: {
-    //             id: slug)
-    //         }
-    //     }
-    // })
+    return slugs.map(slug => {
+        return {
+            params: {
+                id: slug
+            }
+        }
+    });
 }
 
-export async function getBeverageData() {
-    // pobierz dane z bazy
-    // const data = QUERY
-    const data = await prisma.beverage.findMany();
-    // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
-    const json = await JSON.parse(JSON.stringify(data));
-
-    // przeparsuj na Stringa
-    // const contentHtml = processedContent.toString()
-
-    // Combine the data with the id and contentHtml
-    // return {
-    //     id,
-    //     contentHtml,
-    //     ...data
-    // }
-    return json;
-}

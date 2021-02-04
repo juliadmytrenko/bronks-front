@@ -1,13 +1,12 @@
 import Layout from "../components/layout";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import { getBeverageData } from "../lib/beverages";
+import { getAllBeverages } from "../lib/beverages";
 import Beverages from "../components/beverages";
 import React from "react";
 
 export async function getStaticProps() {
-    // const beverages = await getAllBeverages();
-    const beverages = await getBeverageData();
+    const beverages = await getAllBeverages();
 
     return {
         props: {
@@ -16,7 +15,21 @@ export async function getStaticProps() {
     }
 }
 
-export default function Home({ beverages }) {
+
+type beverage = {
+    id: number;
+    slug: string;
+    name: string;
+    description: string;
+    createdAt: Date;
+    img: string;
+}
+
+interface HomeProps {
+    beverages: beverage[];
+}
+
+export default function Home({ beverages } : HomeProps) {
 
     return (
         <Layout home>
