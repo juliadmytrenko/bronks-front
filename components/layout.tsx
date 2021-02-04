@@ -6,9 +6,9 @@ import {makeStyles, Theme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import React from "react";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: theme.palette.background.default,
     },
 }));
 
@@ -33,7 +33,7 @@ export default function Layout(props : LayoutProps) {
                     property="og:image"
                     content={`https://og-image.now.sh/${encodeURI(
                         siteTitle
-                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+                    )}.png?myTheme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
                 />
                 <meta name="og:title" content={siteTitle}/>
                 <meta name="twitter:card" content="summary_large_image"/>

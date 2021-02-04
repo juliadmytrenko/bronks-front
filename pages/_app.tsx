@@ -1,7 +1,7 @@
 import '../styles/global.scss';
 import {ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../styles/theme';
+import myTheme from '../styles/myTheme';
 import {AppProps} from 'next/app';
 import React from "react";
 
@@ -16,7 +16,7 @@ const App = ({Component, pageProps}: AppProps) => {
     }, []); // By doing this, we allow the client to take over styling the app as soon as its ready. https://dev.to/felixmohr/setting-up-a-blog-with-next-js-react-material-ui-and-typescript-2m6k
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={myTheme}>
             <CssBaseline/>
             <Component {...pageProps} />
         </ThemeProvider>);

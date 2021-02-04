@@ -4,7 +4,7 @@ export const paletteColorsDark = {
     primary: '#ffab00',
     secondary: '#ffd600',
     error: '#E44C65',
-    background: '#1b262c',
+    background: 'rgb(178, 119, 0)',
     text: '#bbe1fa',
 }
 
@@ -45,5 +45,5 @@ const options = (dark: boolean): ThemeOptions => {
 // export const darkTheme = createMuiTheme(options(true))
 // export const lightTheme = createMuiTheme(options(false))
 
-const theme = createMuiTheme(options(true));
-export default theme;
+const myTheme = createMuiTheme(options(true));
+export default myTheme;
