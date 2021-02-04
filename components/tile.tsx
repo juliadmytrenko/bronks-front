@@ -7,21 +7,22 @@ import myTheme from '../styles/myTheme';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        border: `2px solid ${myTheme.palette.secondary.main}`,
+        border: `2px outset ${myTheme.palette.secondary.main}`,
         padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
         width: "100%",
         height: "100%",
         maxHeight: "40rem",
-        borderRadius: "0.5rem",
+        borderRadius: "1rem",
         backgroundColor: myTheme.palette.primary.main,
-        color: theme.palette.common.white,
+        color:  theme.palette.primary.contrastText,
         "&:hover": {
             cursor: "pointer",
         }
     },
     pinkBorder: {
         border: `1px solid ${myTheme.palette.secondary.main}`,
-        backgroundColor: theme.palette.common.black,
+        // backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.light,
     },
     title: {
         // color: myTheme.palette.primary.hot,

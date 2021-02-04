@@ -2,6 +2,8 @@ import { createMuiTheme, ThemeOptions } from '@material-ui/core'
 
 export const paletteColorsDark = {
     primary: '#ffab00',
+    light: 'floralwhite',
+    contrastText: '#050505',
     secondary: '#ffd600',
     error: '#E44C65',
     background: 'rgb(178, 119, 0)',
@@ -10,6 +12,8 @@ export const paletteColorsDark = {
 
 export const paletteColorsLight = {
     primary: '#FFF',
+    light: 'ghostwhite',
+    contrastText: '#050505',
     secondary: '#f50057',
     error: '#E44C65',
     background: '#f9f9f9',
@@ -23,6 +27,9 @@ const options = (dark: boolean): ThemeOptions => {
             type: dark ? 'dark' : 'light',
             primary: {
                 main: paletteColors.primary,
+                light: paletteColors.light,
+                dark: paletteColors.primary,
+                contrastText: paletteColors.contrastText,
             },
             secondary: {
                 main: paletteColors.secondary,
