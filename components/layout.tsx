@@ -9,6 +9,9 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: theme.palette.background.default,
+        // "& h1, h2, h3, h4, h5": {
+        //     fontFamily: "Yusei Magic",
+        // }
     },
 }));
 

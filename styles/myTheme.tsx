@@ -37,7 +37,29 @@ const options = (dark: boolean): ThemeOptions => {
                 black: '#484848',
                 white: '#FFF',
             }
-        }
+        },
+        overrides: {
+            MuiTypography: {
+                'h1': {
+                    fontFamily: 'Yusei Magic',
+                },
+                h2: {
+                    fontFamily: 'Yusei Magic',
+                },
+                h3: {
+                    fontFamily: 'Yusei Magic',
+                },
+                h4: {
+                    fontFamily: 'Yusei Magic',
+                },
+                h5: {
+                    fontFamily: 'Yusei Magic',
+                },
+                h6: {
+                    fontFamily: 'Yusei Magic',
+                },
+            }
+        },
     }
 }
 

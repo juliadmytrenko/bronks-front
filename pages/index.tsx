@@ -6,7 +6,10 @@ import Beverages from "../components/beverages";
 import React from "react";
 
 export async function getStaticProps() {
-    const beverages = await getAllBeverages();
+    const res = await getAllBeverages();
+    // I need to serialize this shit because of the DateTime type
+    const beverages = JSON.parse(JSON.stringify(res));
+    // const beverages = JSON.parse(JSON.stringify(res, formatDateFunction()));
 
     return {
         props: {
@@ -16,6 +19,7 @@ export async function getStaticProps() {
 }
 
 
+// muszę najpierw dodać schema graphQL i scalar Datetime
 type beverage = {
     id: number;
     slug: string;
@@ -43,8 +47,3 @@ export default function Home({ beverages } : HomeProps) {
         </Layout>
     )
 }
-
-
-// <small>
-//     <Date dateString={date} />
-// </small>

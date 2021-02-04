@@ -20,25 +20,29 @@ export const getBeverage = async (slug: string) => {
 
 
 export const getAllBeverages = async () => {
-    const res = await prisma.beverage.findMany();
-    const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
+    const beverages = await prisma.beverage.findMany();
+    // const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
 
-    if (!data) {
+
+    if (!beverages) {
         return {
             notFound: true,
         }
     }
 
-    return data;
+    return beverages;
 }
 
 
 export const getAllBeveragesSlugs = async () => {
     // params.id will be a slug
-    const res = await prisma.beverage.findMany();
+    const res = await prisma.beverage.findMany({
+        select: {
+            slug: true,
+        }
+    });
 
-    // const slugs = await JSON.parse(JSON.stringify(res));
-    // const slugs = res;
+    const slugs = res.map(slug => slug.slug);
 
     // Returns an array that looks like this:
     // [
@@ -61,6 +65,6 @@ export const getAllBeveragesSlugs = async () => {
     //         }
     //     }
     // });
-    return res;
+    return slugs;
 }
 

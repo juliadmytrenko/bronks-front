@@ -15,16 +15,16 @@ export async function getStaticProps({ params }) {
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
-    const beverages = await getAllBeveragesSlugs();
+    const slugs = await getAllBeveragesSlugs();
 
     // const paths = await JSON.parse(JSON.stringify(res));
     // const paths = res.toString();
     // Get the paths we want to pre-render based on posts
 
-    const paths = beverages.map((beverage) => (
+    const paths = slugs.map((slug) => (
         {
             params: {
-                id: beverage.slug
+                id: slug
             },
         }));
 
@@ -34,7 +34,6 @@ export async function getStaticPaths() {
     return { paths, fallback: false }
 }
 
-// console.log(getStaticPaths());
 
 export default function Beverage({ beverage }) {
 
@@ -46,9 +45,9 @@ export default function Beverage({ beverage }) {
             <article>
                 <h1 >{beverage.name}</h1>
                 <p >{beverage.description}</p>
-                {/*<div>*/}
-                {/*    <Date dateString={beverage.date} />*/}
-                {/*</div>*/}
+                <small>
+                    <Date dateString={beverage.createdAt} />
+                </small>
                 {/*<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />*/}
             </article>
         </Layout>

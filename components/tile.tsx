@@ -7,24 +7,25 @@ import myTheme from '../styles/myTheme';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        border: `1px solid red ${theme.palette.secondary.main}`,
+        border: `2px solid ${myTheme.palette.secondary.main}`,
         padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
         width: "100%",
         height: "100%",
         maxHeight: "40rem",
         borderRadius: "0.5rem",
-        // backgroundColor: myTheme.palette.background.yellow,
+        backgroundColor: myTheme.palette.primary.main,
         color: theme.palette.common.white,
         "&:hover": {
             cursor: "pointer",
         }
     },
     pinkBorder: {
-        // border: `1px solid ${myTheme.palette.primary.hot}`,
+        border: `1px solid ${myTheme.palette.secondary.main}`,
         backgroundColor: theme.palette.common.black,
     },
     title: {
         // color: myTheme.palette.primary.hot,
+        fontFamily: "Yusei Magic",
     },
     img: {
         width: `auto`,

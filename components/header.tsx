@@ -36,7 +36,7 @@ export default function Header(props: HeaderProps) {
 
                         some icon
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h6" component="h1" className={classes.title}>
                         Bronks
                     </Typography>
                     <Button color="inherit">Login</Button>
