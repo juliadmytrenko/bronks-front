@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
 import {Typography} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Link from "next/link";
@@ -13,18 +12,18 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         maxHeight: "40rem",
         borderRadius: "0.5rem",
-        backgroundColor: theme.palette.background.yellow,
+        // backgroundColor: theme.palette.background.yellow,
         color: theme.palette.common.white,
         "&:hover": {
             cursor: "pointer",
         }
     },
     pinkBorder: {
-        border: `1px solid ${theme.palette.primary.hot}`,
+        // border: `1px solid ${theme.palette.primary.hot}`,
         backgroundColor: theme.palette.common.black,
     },
     title: {
-        color: theme.palette.primary.hot,
+        // color: theme.palette.primary.hot,
     },
     img: {
         width: `auto`,
@@ -38,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Tile({tile}) {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <Link href="#">

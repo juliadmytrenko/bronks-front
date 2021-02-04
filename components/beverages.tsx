@@ -1,7 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { useTheme } from '@material-ui/core/styles';
 import Tile from "./tile";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Beverages() {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <div className={classes.root}>
