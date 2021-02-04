@@ -1,30 +1,49 @@
+import { createMuiTheme, ThemeOptions } from '@material-ui/core'
 
-// @ts-ignore
-import { createMuiTheme } from '@material-ui/core/styles';
+export const paletteColorsDark = {
+    primary: '#ffab00',
+    secondary: '#ffd600',
+    error: '#E44C65',
+    background: '#1b262c',
+    text: '#bbe1fa',
+}
 
+export const paletteColorsLight = {
+    primary: '#FFF',
+    secondary: '#f50057',
+    error: '#E44C65',
+    background: '#f9f9f9',
+    text: '#050505',
+}
 
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#ffab00',
-            dark: '#212121',
-            contrastText: '#fff',
-        },
-        secondary: {
-            main: '#ffd600',
-            contrastText: '#f50057',
-        },
-        error: {
-            main: '#FFF',
-        },
-        background: {
-            default: '#fff',
-        },
-        common: {
-            black: '#484848',
-            white: '#FFF',
+const options = (dark: boolean): ThemeOptions => {
+    const paletteColors = dark ? paletteColorsDark : paletteColorsLight
+    return {
+        palette: {
+            type: dark ? 'dark' : 'light',
+            primary: {
+                main: paletteColors.primary,
+            },
+            secondary: {
+                main: paletteColors.secondary,
+            },
+            error: {
+                main: paletteColors.error,
+            },
+            background: {
+                default: paletteColors.background,
+            },
+            common: {
+                black: '#484848',
+                white: '#FFF',
+            }
         }
-    },
-});
+    }
+}
 
+// TODO: ogarnąć jak zrobić zmianę motywu po stronie klienta
+// export const darkTheme = createMuiTheme(options(true))
+// export const lightTheme = createMuiTheme(options(false))
+
+const theme = createMuiTheme(options(true));
 export default theme;
