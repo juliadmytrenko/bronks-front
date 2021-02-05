@@ -1,93 +1,43 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Tile from "./tile";
+import {beverage} from "../lib/myTypes";
+// import Link from "next/link";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: "1rem",
-        overflow: 'hidden',
-        padding: theme.spacing(3),
-        margin: `0 ${theme.spacing(1)}px`,
-        "& > *": {
-            flex: 1,
-            flexBasis: "250px"
-        }
+        margin: `${theme.spacing(3)}px auto`,
     },
+    link : {
+        textDecoration: "none",
+        display: "block",
+        width: "100%",
+        height: "100%",
+        zIndex: 2,
+    }
 }));
 
 
+interface BeveragesProps {
+    beverages: beverage[];
+}
 
-export default function Beverages() {
+export default function Beverages({beverages} : BeveragesProps) {
     const classes = useStyles();
 
+    // const handleOnClick = () => {
+    //
+    // }
+
     return (
-        <div className={classes.root}>
-                {tileData.map((tile, index) => (
-                    <Tile key={index} tile={tile} />
-                ))}
-        </div>
+        <Grid container className={classes.root} spacing={2}>
+            {beverages.map((beverage, index) => (
+                <Grid key={index} item xs={12} md={4} lg={3} >
+                    <Tile tile={beverage}/>
+                </Grid>
+            ))}
+        </Grid>
     );
 }
 
-
-const tileDataMockup =  {
-    img: "https://images.punkapi.com/v2/192.png",
-    title: 'Punk IPA 2007 - 2010',
-    author: 'Punk',
-};
-
-const tileData = [
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-    {
-        img: tileDataMockup.img,
-        title: tileDataMockup.title,
-        author: tileDataMockup.author,
-    },
-];

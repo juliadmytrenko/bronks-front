@@ -1,4 +1,7 @@
-import {prisma} from './prisma';
+import prisma from './prisma';
+
+
+
 
 
 export const getBeverage = async (slug: string) => {

@@ -1,32 +1,49 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {Typography} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Link from "next/link";
-import myTheme from '../styles/myTheme';
+
+
+const shortenText = (text: string) => {
+
+    let sliced = text;
+    if (sliced.length > 150) {
+        sliced = text.slice(0, 150);
+        sliced += " ...";
+    }
+
+    return sliced;
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        border: `2px outset ${myTheme.palette.secondary.main}`,
+        border: `2px outset ${theme.palette.secondary.main}`,
         padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
         width: "100%",
         height: "100%",
         maxHeight: "40rem",
         borderRadius: "1rem",
-        backgroundColor: myTheme.palette.primary.main,
-        color:  theme.palette.primary.contrastText,
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+        textDecoration: "none",
+        display: "block",
+        zIndex: 2,
         "&:hover": {
             cursor: "pointer",
+        },
+        "&:active": {
+            border: `2px inset ${theme.palette.secondary.main}`,
         }
     },
     pinkBorder: {
-        border: `1px solid ${myTheme.palette.secondary.main}`,
+        height: "100%",
+        border: `1px solid ${theme.palette.secondary.main}`,
         // backgroundColor: theme.palette.primary.light,
         backgroundColor: theme.palette.primary.light,
     },
-    title: {
+    name: {
         // color: myTheme.palette.primary.hot,
-        fontFamily: "Yusei Magic",
     },
     img: {
         width: `auto`,
@@ -37,29 +54,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function Tile({tile}) {
+    // const [state, setState] = React.useState("initState");
     const classes = useStyles();
 
     return (
-        <Link href="#">
-            <div className={classes.root}>
+        <Link href={`/beverages/${encodeURIComponent(tile.slug)}`}>
+            <a className={classes.root}>
                 <Box p={3} className={classes.pinkBorder}>
-                    <img className={classes.img} src={tile.img} alt={tile.title} />
+                    <img className={classes.img} src={tile.img} alt={tile.title}/>
                     <Box mt={3}>
-                        <Typography className={classes.title} variant="h6" component="h4">{tile.title}</Typography>
-                        <Typography>{tile.author}</Typography>
+                        <Typography className={classes.name} variant="h6" component="h4">{tile.name}</Typography>
+                        <Typography>{shortenText(tile.description)}</Typography>
                     </Box>
                 </Box>
-            </div>
+            </a>
         </Link>
     );
 }
 
-
-const tileDataMockup =  {
-    img: "https://images.punkapi.com/v2/192.png",
-    title: 'Punk IPA 2007 - 2010',
-    author: 'Punk',
-};
-
+// <Link >
+//     <a className={classes.link}><Tile tile={beverage}/></a>
+// </Link>
