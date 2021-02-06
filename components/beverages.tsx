@@ -9,13 +9,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         margin: `${theme.spacing(3)}px auto`,
     },
-    link : {
-        textDecoration: "none",
-        display: "block",
-        width: "100%",
-        height: "100%",
-        zIndex: 2,
-    }
 }));
 
 
