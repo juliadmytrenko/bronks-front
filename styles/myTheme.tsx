@@ -43,7 +43,8 @@ const options = (dark: boolean): ThemeOptions => {
             common: {
                 black: '#484848',
                 white: '#FFF',
-            }
+
+            },
         },
         overrides: {
             MuiTypography: {

@@ -1,11 +1,13 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import {Box} from "@material-ui/core";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,9 +16,12 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
     },
-    title: {
+    logo: {
         flexGrow: 1,
     },
+    link: {
+       textDecoration: "none",
+    }
 }));
 
 interface HeaderProps {
@@ -31,15 +36,18 @@ export default function Header(props: HeaderProps) {
             <AppBar position="static">
                 <Container maxWidth="lg">
                 <Toolbar>
+                    <Box className={classes.logo}>
+                        <Link href="/">
+                            <a className={classes.link}>
+                                <Typography variant="h4" component="h1" >
+                                    🍻 Bronks
+                                </Typography>
+                            </a>
+                        </Link>
+                    </Box>
 
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-
-                        some icon
-                    </IconButton>
-                    <Typography variant="h6" component="h1" className={classes.title}>
-                        Bronks
-                    </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Box mr={2}><Link href="/login" passHref><Button variant="contained" color="secondary">Login</Button></Link></Box>
+                    <Link href="/signup" passHref><Button color="inherit">Sign Up</Button></Link>
 
                 </Toolbar>
                 </Container>
@@ -47,3 +55,4 @@ export default function Header(props: HeaderProps) {
         </header>
     );
 }
+
