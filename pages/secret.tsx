@@ -7,7 +7,7 @@ const Secret = () => {
     const [content, setContent] = useState("");
 
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async () => {
             const res = await fetch("/api/secret");
             const json = await res.json();
 

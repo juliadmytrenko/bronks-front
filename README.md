@@ -21,6 +21,16 @@
     -  chodzi o to, że style za pierwszym razem gdy strona się wczytuje z serwera są wczytywane z serwera(aby uniknąć 'flickering' (doczytywanie styli po stronie klienta powoduje przeskakiwanie contentu)), ale potem chcę się pozbyć tych z serwera i korzystać tylko z tych po stronie klienta
 - Zainstalować Prisma globalnie (lokalna instalacja ma problemy ze ścieżkami na windowsie)
 
+## AUTH
+tutaj bedzie pojebanstwo jak zwykle
+Podłącz prismę tak jak w tym tutku, https://github.com/leighhalliday/next-auth-demo/blob/main/prisma/schema.prisma
+https://www.youtube.com/watch?v=3q4BtCzuryY&t=538s
+
+reszta tak jak tutaj: https://www.youtube.com/watch?v=o_wZIVmWteQ
+
+
+w liscie dostepnych callbackow Auth0 dać http://localhost:3000/api/auth/callback/auth0
+i analogicznie dla reszty sociali
 
 ##### przydatne linki
 pierwsze odpalenie prismy
