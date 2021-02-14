@@ -13,12 +13,7 @@ const options = {
         }),
     ],
     adapter: Adapters.Prisma.Adapter({ prisma }), // set sync to falce when in production
-    debug: process.env.NODE_ENV === "development",
-    secret: process.env.AUTH_SECRET,
-    jwt: {
-        encryption: true,
-        secret: process.env.JWT_SECRET,
-    },
+    secret: process.env.AUTH_SECRET, // https://next-auth.js.org/configuration/options#secret
 }
 
 export default (req : NextApiRequest, res : NextApiResponse) => NextAuth(req, res, options);
