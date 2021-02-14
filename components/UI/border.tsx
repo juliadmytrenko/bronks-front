@@ -7,7 +7,8 @@ import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        border: `2px outset ${theme.palette.secondary.main}`,
+        boxShadow: `5px 5px 1px 1px ${theme.palette.secondary.main}`,
+        // border: `2px outset ${theme.palette.secondary.main}`,
         padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
         width: "100%",
         height: "100%",
@@ -22,12 +23,16 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
         "&:active": {
-            border: `2px inset ${theme.palette.secondary.main}`,
+            position: 'relative',
+            top: 5,
+            left: 5,
+            boxShadow: `0px 0px 1px 1px ${theme.palette.secondary.main}`,
         }
     },
     innerBorder: {
+        borderRadius: "1rem",
         height: "100%",
-        border: `1px solid ${theme.palette.secondary.main}`,
+        // border: `1px solid ${theme.palette.secondary.main}`,
         backgroundColor: theme.palette.primary.light,
     },
 }));

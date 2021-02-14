@@ -29,9 +29,17 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "baseline",
         justifyContent: "flex-end",
     },
+    emailField: {
+        minWidth: `18rem`,
+    },
     toolbar: {
         flexWrap: "wrap",
         marginTop: theme.spacing(2),
+
+    },
+    blackBg: {
+        // backgroundColor: `black`,
+        backgroundColor: theme.palette.common.black
     }
 }));
 
@@ -46,8 +54,8 @@ export default function Header(props: HeaderProps) {
 
     return (
         <header className={classes.root}>
-            <AppBar position="static">
-                <Container maxWidth="lg">
+            <AppBar position="static" className={classes.blackBg} >
+                <Container maxWidth="lg" >
                 <Toolbar className={classes.toolbar}>
                     <Box className={classes.logo}>
                         <Link href="/">
@@ -68,9 +76,10 @@ export default function Header(props: HeaderProps) {
                         )
                     }
                     </Box>
-                    <Box width="100%">
-                        <form noValidate className={classes.form}>
+                    <Box width="100%" className={classes.secondRow}>
+                        <form className={classes.form}>
                             <TextField
+                                className={classes.emailField}
                                 variant="outlined"
                                 margin="normal"
                                 id="email"
@@ -79,6 +88,7 @@ export default function Header(props: HeaderProps) {
                                 autoComplete="email"
                                 autoFocus
                                 value={email}
+                                required
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <Box ml={2}>
@@ -86,7 +96,7 @@ export default function Header(props: HeaderProps) {
                                     type="submit"
                                     variant="contained"
                                     color="secondary"
-                                    onClick={() => signIn('email', { email: email })}
+                                    onClick={() => signIn("email", { email: email })}
                                 >
                                     Sign In with email
                                 </Button>

@@ -41,7 +41,7 @@ const options = (dark: boolean): ThemeOptions => {
                 default: paletteColors.background,
             },
             common: {
-                black: '#484848',
+                black: '#000',
                 white: '#FFF',
 
             },
