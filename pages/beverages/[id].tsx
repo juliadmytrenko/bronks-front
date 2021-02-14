@@ -151,7 +151,7 @@ export default function Beverage({beverage: beverage}) {
                 <Grid item xs={12}>
                     <div className={clsx(classes.strapWithButtons,classes.background)}>
                         <div className={classes.addToMyList}>
-                            <Button variant="contained" color="primary"  startIcon={ <AddIcon/>}>
+                            <Button variant="contained" color="primary"  startIcon={<AddIcon/>}>
                                Dodaj do mojej listy
                             </Button>
                         </div>
@@ -163,7 +163,7 @@ export default function Beverage({beverage: beverage}) {
 
                 <Grid item xs={12} lg={3}>
                     <BorderUI>
-                        NAWIGACJA BOCZNA
+                        NAWIGACJA BOCZNA (ta nawigacja ma byc jeszcze bardziej po boku position: fixed)
                         <ul>
                             <li>link1</li>
                             <li>link2</li>

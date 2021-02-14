@@ -28,9 +28,10 @@ https://www.youtube.com/watch?v=3q4BtCzuryY&t=538s
 
 reszta tak jak tutaj: https://www.youtube.com/watch?v=o_wZIVmWteQ
 
-
-w liscie dostepnych callbackow Auth0 dać http://localhost:3000/api/auth/callback/auth0
+w liscie callbacków dać:
+http://localhost:3000/api/auth/callback/github
 i analogicznie dla reszty sociali
+- chwilowo rezygnuję z Auth0, bo jest cholernie drogie. TODO: zrobić własną autoryzację
 
 ##### przydatne linki
 pierwsze odpalenie prismy

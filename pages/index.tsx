@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import Box from "@material-ui/core/Box";
 import { getAllBeverages } from "../lib/beverages";
 import Beverages from "../components/beverages";
-import React from "react";
+import React, {useEffect} from "react";
 import {beverage} from "../lib/myTypes";
 import { signIn, signOut, useSession } from "next-auth/client";
 import Link from "next/link";
@@ -28,29 +28,29 @@ interface HomeProps {
 export default function Home({ beverages } : HomeProps) {
     const [session, loading] = useSession();
 
+    useEffect(() => {
+        return () => {
+            // console.log(session.user);
+        };
+    }, [session]);
+
+
+
     return (
         <Layout home>
-            <nav>
-                {!session ? (
-                    <button onClick={() => signIn()}>Sign In</button>
-                ) : (
-                    <>
-                        <span>{session.user.name}</span>
-                        {session.user.image && (
-                            <img
-                                src={session.user.image}
-                                style={{ width: "25px", borderRadius: "50%" }}
-                            />
-                        )}
-                        <span>Signed In</span>
+            {session &&
+                <section>
+                    <span>{session.user.name}</span>
+                    {session.user.image && (
+                        <img
+                            src={session.user.image}
+                            style={{ width: "25px", borderRadius: "50%" }}
+                        />
+                    )}
+                    <span>Signed In</span>
+                </section>
+            }
 
-                        <button onClick={signOut}>Sign Out</button>
-                    </>
-                )}
-                <button>
-                    <Link href="/secret">To the secret</Link>
-                </button>
-            </nav>
             <section>
                 <Box paddingBottom={1}>
                     <Beverages beverages={beverages}/>

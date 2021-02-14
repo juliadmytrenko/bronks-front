@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,7 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
+import { providers, signIn } from 'next-auth/client'
+import type { SessionProvider } from 'next-auth/client';
+import AddIcon from "@material-ui/icons/Add";
+import { FaGithub } from 'react-icons/fa';
+
 
 function Copyright() {
     return (
@@ -47,7 +52,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LogIn() {
+export async function getStaticProps({context}) {
+
+    return {
+        props: {
+            providers: await providers()
+        }
+    }
+}
+
+interface LogInProps {
+    providers: SessionProvider[];
+}
+
+export default function Signin({ providers } : LogInProps) {
+    const [email, setEmail] = useState('');
     const classes = useStyles();
 
     return (
@@ -73,21 +92,8 @@ export default function LogIn() {
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <Button
                                 type="submit"
@@ -95,25 +101,21 @@ export default function LogIn() {
                                 variant="contained"
                                 color="primary"
                                 className={classes.submit}
+                                onClick={() => signIn('email', { email: email })}
                             >
-                                Log In
+                                Log In with email
                             </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link href="#" variant="body2">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
                         </form>
+
+                        <Grid container>
+                            <Grid item xs>
+                                <Button onClick={() => signIn("github")} startIcon={<FaGithub/>} >Sign in with Github</Button>
+                            </Grid>
+                        </Grid>
                     </div>
                 </Container>
             </Box>
         </Layout>
     );
 }
+
