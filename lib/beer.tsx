@@ -2,10 +2,8 @@ import prisma from './prisma';
 
 
 
-
-
-export const getBeverage = async (slug: string) => {
-    const res = await prisma.beverage.findUnique({
+export const getBeer = async (slug: string) => {
+    const res = await prisma.beer.findUnique({
         where: {
             slug: slug,
         },
@@ -22,8 +20,8 @@ export const getBeverage = async (slug: string) => {
 }
 
 
-export const getAllBeverages = async () => {
-    const beverages = await prisma.beverage.findMany();
+export const getAllBeer = async () => {
+    const beverages = await prisma.beer.findMany();
     // const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
 
 
@@ -37,9 +35,9 @@ export const getAllBeverages = async () => {
 }
 
 
-export const getAllBeveragesSlugs = async () => {
+export const getAllBeerSlugs = async () => {
     // params.id will be a slug
-    const res = await prisma.beverage.findMany({
+    const res = await prisma.beer.findMany({
         select: {
             slug: true,
         }

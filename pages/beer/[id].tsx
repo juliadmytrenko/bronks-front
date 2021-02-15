@@ -1,19 +1,19 @@
 import Head from 'next/head'
 import Layout from "../../components/layout";
 import Date from '../../components/date'
-import {getAllBeveragesSlugs, getBeverage} from "../../lib/beverages";
+import {getAllBeerSlugs, getBeer} from "../../lib/beer";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import {beverage} from "../../lib/myTypes";
+import {beer} from "../../lib/myTypes";
 import BorderUI from "../../components/UI/border";
 import clsx from "clsx";
 import {Button} from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 
 export async function getStaticProps({params}) {
-    const beverage = await getBeverage(params.id)
+    const beverage = await getBeer(params.id)
     return {
         props: {
             beverage
@@ -24,7 +24,7 @@ export async function getStaticProps({params}) {
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
-    const slugs = await getAllBeveragesSlugs();
+    const slugs = await getAllBeerSlugs();
 
     // const paths = await JSON.parse(JSON.stringify(res));
     // const paths = res.toString();
@@ -115,31 +115,31 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-interface BeverageProps {
-    beverage: beverage;
+interface BeerPageProps {
+    beer: beer;
 }
 
-export default function Beverage({beverage: beverage}) {
+export default function Beer({beer}: BeerPageProps) {
     const classes = useStyles();
 
     return (
         <Layout>
             <Head>
-                <title>{beverage.name}</title>
+                <title>{beer.name}</title>
             </Head>
 
 
             <Grid container className={classes.root} spacing={2}>
                     <Grid item xs={12} md={4} lg={3}>
                         <BorderUI>
-                            <img className={classes.img} src={beverage.img} alt={beverage.name}/>
+                            <img className={classes.img} src={beer.img} alt={beer.name}/>
                         </BorderUI>
                     </Grid>
                 <Grid item xs={12} md={8} lg={9}>
                     <BorderUI className={classes.desc}>
                         <div>
-                            <h2>{beverage.name}</h2>
-                            <p>{beverage.description}</p>
+                            <h2>{beer.name}</h2>
+                            <p>{beer.description}</p>
                         </div>
                         <div className={classes.price}><Typography variant="h5" component="span" align="center">9,99zł</Typography></div>
                     </BorderUI>
