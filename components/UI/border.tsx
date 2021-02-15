@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         display: "block",
         zIndex: 2,
-        "&:hover": {
+        "link:hover": {
             cursor: "pointer",
         },
         "&:active": {
@@ -49,7 +49,7 @@ export default function BorderUI({className, href, children, ...other} : BorderU
     return (
         href ? (
             <Link href={href}>
-                <a className={clsx(classes.root, className)}  {...other}>
+                <a className={clsx(classes.root, classes.link, className)}  {...other}>
                     <Box p={3} className={classes.innerBorder}>
                         {children}
                     </Box>
