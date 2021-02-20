@@ -61,7 +61,7 @@ export default function Header(props: HeaderProps) {
               <Link href="/">
                 <a className={classes.link}>
                   <Typography variant="h4" component="h1">
-                    🍻 Bronks
+                    🍻
                   </Typography>
                 </a>
               </Link>

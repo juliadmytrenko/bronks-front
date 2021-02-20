@@ -5,9 +5,13 @@ import prisma from './prisma';
 export const getBeer = async (slug: string) => {
     const res = await prisma.beer.findUnique({
         where: {
-            slug: slug,
+            product_slug: slug
         },
-    })
+        include: {
+            product: true,
+        }
+    });
+
     const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
 
     if (!data) {
@@ -21,29 +25,31 @@ export const getBeer = async (slug: string) => {
 
 
 export const getAllBeer = async () => {
-    const beverages = await prisma.beer.findMany();
-    // const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
+    const res = await prisma.beer.findMany({
+        include: {
+            product: true
+        },
+    });
+    const allBeer = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
 
 
-    if (!beverages) {
+    if (!allBeer) {
         return {
             notFound: true,
         }
     }
 
-    return beverages;
+    return allBeer;
 }
 
 
 export const getAllBeerSlugs = async () => {
     // params.id will be a slug
-    const res = await prisma.beer.findMany({
-        select: {
-            slug: true,
-        }
-    });
+    const res = await prisma.beer.findMany();
 
-    const slugs = res.map(slug => slug.slug);
+    const allBeer = await JSON.parse(JSON.stringify(res));
+
+    const slugs = allBeer.map(slug => slug.product_slug);
 
     // Returns an array that looks like this:
     // [

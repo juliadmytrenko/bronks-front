@@ -8,7 +8,7 @@ import BorderUI from "./UI/border";
 const shortenText = (text: string) => {
 
     let sliced = text;
-    if (sliced.length > 150) {
+    if (sliced && sliced.length > 150) {
         sliced = text.slice(0, 150);
         sliced += " ...";
     }
@@ -19,6 +19,7 @@ const shortenText = (text: string) => {
 const useStyles = makeStyles((theme) => ({
     img: {
         width: `auto`,
+        maxWidth: `100%`,
         height: "20rem",
         display: `block`,
         margin: `0 auto`,
@@ -30,11 +31,11 @@ export default function Tile({tile}) {
     const classes = useStyles();
 
     return (
-       <BorderUI href={`/beverages/${encodeURIComponent(tile.slug)}`}>
-            <img className={classes.img} src={tile.img} alt={tile.title}/>
+       <BorderUI href={`/beer/${encodeURIComponent(tile.product.slug)}`}>
+            <img className={classes.img} src={tile.product.image} alt={tile.product.name}/>
             <Box mt={3}>
-                <Typography variant="h6" component="h4">{tile.name}</Typography>
-                <Typography>{shortenText(tile.description)}</Typography>
+                <Typography variant="h6" component="h4">{tile.product.name}</Typography>
+                <Typography>{shortenText(tile.product.description)}</Typography>
             </Box>
        </BorderUI>
     );

@@ -74,8 +74,8 @@ model Producer {
 }
 
 model Beer {
-  product          Product  @relation(fields: [product_id], references: [id])
-  product_id       Int      @id
+  product          Product  @relation(fields: [product_slug], references: [slug])
+  product_slug     String   @id @default("lol")
   type             String
   full_description String
   ABV              Float
