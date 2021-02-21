@@ -8,11 +8,8 @@ import clsx from "clsx";
 const useStyles = makeStyles((theme) => ({
     root: {
         boxShadow: `5px 5px 1px 1px ${theme.palette.secondary.main}`,
-        // border: `2px outset ${theme.palette.secondary.main}`,
         padding: `${theme.spacing(1)}px ${theme.spacing(1)}px`,
         width: "100%",
-        height: "100%",
-        maxHeight: "40rem",
         borderRadius: "1rem",
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
@@ -32,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
     innerBorder: {
         borderRadius: "1rem",
         height: "100%",
-        // border: `1px solid ${theme.palette.secondary.main}`,
         backgroundColor: theme.palette.primary.light,
     },
 }));

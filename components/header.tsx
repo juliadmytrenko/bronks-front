@@ -10,11 +10,11 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { FaGithub } from "react-icons/fa";
 import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import FormGroup from '@material-ui/core/FormGroup';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -25,12 +25,14 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   form: {
-    display: "flex",
-    alignItems: "baseline",
-    justifyContent: "flex-end",
+    paddingTop: theme.spacing(2),
   },
   emailField: {
     minWidth: `18rem`,
+    margin: 0,
+  },
+  emailButton: {
+    height: `100%`,
   },
   toolbar: {
     flexWrap: "wrap",
@@ -38,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   blackBg: {
-    // backgroundColor: `black`,
     backgroundColor: theme.palette.common.black,
   },
 }));
@@ -53,9 +54,8 @@ export default function Header(props: HeaderProps) {
   const [email, setEmail] = useState("");
 
   return (
-    <header className={classes.root}>
       <AppBar position="static" className={classes.blackBg}>
-        <Container maxWidth="lg">
+        <Container>
           <Toolbar className={classes.toolbar}>
             <Box className={classes.logo}>
               <Link href="/">
@@ -89,34 +89,38 @@ export default function Header(props: HeaderProps) {
             </Box>
             <Box width="100%" >
               <form className={classes.form}>
-                <TextField
-                  className={classes.emailField}
-                  variant="outlined"
-                  margin="normal"
-                  id="email"
-                  label="Your email address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  value={email}
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Box ml={2}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => signIn("email", { email: email })}
-                  >
-                    Sign In with email
-                  </Button>
-                </Box>
+                <Grid container spacing={1} justify="flex-end" alignItems="stretch">
+                  <Grid item xs={12} md="auto" >
+                  <TextField
+                    className={classes.emailField}
+                    variant="outlined"
+                    margin="normal"
+                    id="email"
+                    label="Your email address"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    value={email}
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  </Grid>
+                  <Grid item xs={12} md="auto" spacing={1}>
+                    <Button
+                      className={classes.emailButton}
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => signIn("email", { email: email })}
+                    >
+                      Sign In
+                    </Button>
+                  </Grid>
+                </Grid>
               </form>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
-    </header>
   );
 }

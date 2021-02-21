@@ -6,7 +6,7 @@ export const paletteColorsDark = {
     contrastText: '#050505',
     secondary: '#ffd600',
     error: '#E44C65',
-    background: 'rgb(178, 119, 0)',
+    background: 'rgba(0, 0, 0, 0.6)',
     text: '#bbe1fa',
 }
 

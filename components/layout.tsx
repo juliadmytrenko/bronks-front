@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: theme.palette.background.default,
     },
+    main: {
+        margin: `${theme.spacing(3)}px auto`,
+    }
 }));
 
 export const siteTitle = 'Next.js Sample Website'
@@ -40,7 +43,7 @@ export default function Layout(props : LayoutProps) {
             </Head>
 
             <Header home={props.home}/>
-            <main>
+            <main className={classes.main}>
                 <Container maxWidth="lg">
                     {props.children}
                 </Container>

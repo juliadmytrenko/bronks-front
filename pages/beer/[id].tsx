@@ -14,35 +14,30 @@ import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: `${theme.spacing(3)}px auto`,
+    // padding: `${theme.spacing(3)}px auto`,
   },
   desc: {
     height: "auto",
     position: "relative",
-    "& > div": {
+    "& > div:first-of-type": {
       paddingRight: `6rem`,
       [theme.breakpoints.up("md")]: {
         paddingRight: `16rem`,
       },
-      // paddingRight: `16rem`,
     },
   },
   producer: {
-    marginLeft: `${theme.spacing(5)}px`,
-    marginTop: `-${theme.spacing(3)}px`,
-    position: "absolute",
-    zIndex: 3,
-    display: "inline-block",
     width: "auto",
     height: "auto",
-    // backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(1),
   },
   background: {
     border: `2px outset ${theme.palette.secondary.main}`,
     backgroundColor: theme.palette.secondary.main,
   },
   price: {
-    border: `2px outset ${theme.palette.secondary.main}`,
+    fontFamily: "Roboto",
+    border: `0.2rem solid ${theme.palette.secondary.main}`,
     borderRadius: "50%",
     width: "7rem",
     height: "7rem",
@@ -58,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
       right: "4rem",
     },
   },
+  priceFont: {
+    fontSize: `1.6rem`,
+  },
   img: {
     width: `auto`,
     height: "20rem",
@@ -65,11 +63,11 @@ const useStyles = makeStyles((theme) => ({
     margin: `0 auto`,
   },
   strapWithButtons: {
-    marginTop: `${theme.spacing(5)}px`,
+    // marginTop: `${theme.spacing(5)}px`,
     display: "flex",
     flexWrap: "wrap",
     gap: "1rem",
-    padding: `${theme.spacing(1)}px`,
+    padding: `${theme.spacing(1)}px 0`,
     [theme.breakpoints.up("md")]: {
       marginTop: 0,
     },
@@ -123,29 +121,29 @@ export default function Beer({ beer }) {
         <title>{beer.product.name}</title>
       </Head>
 
+
       <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12} md={4} lg={3}>
-          <BorderUI>
+
             <img
               className={classes.img}
               src={beer.product.image}
               alt={beer.product.name}
             />
-          </BorderUI>
         </Grid>
         <Grid item xs={12} md={8} lg={9}>
-          <BorderUI className={classes.desc}>
+          <div className={classes.desc}>
             <div>
               <h2>{beer.product.name}</h2>
               <p>{beer.full_description}</p>
             </div>
             <div className={classes.price}>
-              <Typography variant="h5" component="span" align="center">
+              <Typography className={classes.priceFont} component="span" align="center">
                 9,99zł
               </Typography>
             </div>
-          </BorderUI>
-          <div className={clsx(classes.producer, classes.background)}>
+          </div>
+          <div className={clsx(classes.producer)}>
             <Typography variant="h5" component="p">
               Producent: jakisproducent
             </Typography>
@@ -153,7 +151,7 @@ export default function Beer({ beer }) {
         </Grid>
 
         <Grid item xs={12}>
-          <div className={clsx(classes.strapWithButtons, classes.background)}>
+          <div className={clsx(classes.strapWithButtons)}>
             <div className={classes.addToMyList}>
               <Button
                 variant="contained"
@@ -174,7 +172,7 @@ export default function Beer({ beer }) {
         </Grid>
 
         <Grid item xs={12} lg={3}>
-          <BorderUI>
+
             NAWIGACJA BOCZNA (ta nawigacja ma byc jeszcze bardziej po boku
             position: fixed)
             <ul>
@@ -183,10 +181,10 @@ export default function Beer({ beer }) {
               <li>link3</li>
               <li>link4</li>
             </ul>
-          </BorderUI>
+
         </Grid>
         <Grid item xs={12} lg={9}>
-          <BorderUI>
+
             szczegóły techniczne:
             <ul>
               <li>info1</li>
@@ -194,10 +192,10 @@ export default function Beer({ beer }) {
               <li>info3</li>
               <li>info4</li>
             </ul>
-          </BorderUI>
+
         </Grid>
         <Grid item xs={12}>
-          <BorderUI>gdzie jest dostępne : (mapka może?)</BorderUI>
+         gdzie jest dostępne : (mapka może?)
         </Grid>
         <Grid item xs={12}>
           linki do udostępniania

@@ -39,81 +39,7 @@ const Footer = () => {
         <footer className={`${classes.footer}`}>
             <Container maxWidth="lg">
                 <Grid container spacing={1}>
-                    <Grid item xs={4}>
-                        <section>
-                            <Typography variant="h5" gutterBottom>
-                                small header
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                <ul className={`${classes.list}`}>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </Typography>
-                        </section>
-                        <section>
-                            <Typography variant="h5" gutterBottom>
-                                small header
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                <ul className={`${classes.list}`}>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </Typography>
-                        </section>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <section>
-                            <Typography variant="h5" gutterBottom>
-                                small header
-                            </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                <ul className={`${classes.list}`}>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <a>some text</a>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </Typography>
-                        </section>
+                    <Grid item xs={6} md={4}>
                         <section>
                             <Typography variant="h5" gutterBottom>
                                 small header
@@ -139,7 +65,34 @@ const Footer = () => {
                             </Typography>
                         </section>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={6} md={4}>
+                        <section>
+                            <Typography variant="h5" gutterBottom>
+                                small header
+                            </Typography>
+                            <Typography variant="body1" gutterBottom>
+                                <ul className={`${classes.list}`}>
+                                    <li>
+                                        <Link href="#">
+                                            <a>some text</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="#">
+                                            <a>some text</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="#">
+                                            <a>some text</a>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </Typography>
+                        </section>
+
+                    </Grid>
+                    <Grid item xs={12} md={4}>
                         <section>
                             <Typography variant="h5" gutterBottom>
                                 Socials
