@@ -11,20 +11,15 @@ import BorderUI from "../../components/UI/border";
 import clsx from "clsx";
 import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // padding: `${theme.spacing(3)}px auto`,
+
   },
   desc: {
     height: "auto",
     position: "relative",
-    "& > div:first-of-type": {
-      paddingRight: `6rem`,
-      [theme.breakpoints.up("md")]: {
-        paddingRight: `16rem`,
-      },
-    },
   },
   producer: {
     width: "auto",
@@ -35,26 +30,49 @@ const useStyles = makeStyles((theme) => ({
     border: `2px outset ${theme.palette.secondary.main}`,
     backgroundColor: theme.palette.secondary.main,
   },
-  price: {
-    fontFamily: "Roboto",
-    border: `0.2rem solid ${theme.palette.secondary.main}`,
-    borderRadius: "50%",
-    width: "7rem",
-    height: "7rem",
+  prices: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    top: "0rem",
-    right: "0rem",
-    backgroundColor: theme.palette.secondary.main,
-    [theme.breakpoints.up("md")]: {
-      top: "1rem",
-      right: "4rem",
+    '& button': {
+      borderRadius: `50%`,
     },
   },
-  priceFont: {
-    fontSize: `1.6rem`,
+  lowestPrice: {
+    width: "6rem",
+    height: "6rem",
+    marginRight: -theme.spacing(1),
+    borderColor: "green",
+    backgroundColor: "green",
+    '& span': {
+      fontSize: `1.4rem`,
+    },
+    '&:hover': {
+      backgroundColor: `hsl(120, 100%, 20%)`,
+      zIndex: 3,
+    },
+  },
+  highestPrice: {
+    width: "4rem",
+    height: "4rem",
+    marginLeft: -theme.spacing(1),
+    borderColor: "red",
+    backgroundColor: "red",
+    '& span': {
+      fontSize: `1rem`,
+    },
+    '&:hover': {
+      backgroundColor: `hsl(0, 100%, 30%)`,
+      zIndex: 3,
+    },
+  },
+  regularPrice: {
+    width: "7rem",
+    height: "7rem",
+    zIndex: 1,
+    '& span': {
+      fontSize: `1.6rem`,
+    }
   },
   img: {
     width: `auto`,
@@ -63,11 +81,13 @@ const useStyles = makeStyles((theme) => ({
     margin: `0 auto`,
   },
   strapWithButtons: {
-    // marginTop: `${theme.spacing(5)}px`,
+    backgroundColor: theme.palette.common.black,
+    // padding: `0 ${theme.spacing(1)}`,
+    borderRadius: `0.5rem`,
     display: "flex",
     flexWrap: "wrap",
     gap: "1rem",
-    padding: `${theme.spacing(1)}px 0`,
+    padding: `${theme.spacing(1)}px`,
     [theme.breakpoints.up("md")]: {
       marginTop: 0,
     },
@@ -131,22 +151,30 @@ export default function Beer({ beer }) {
               alt={beer.product.name}
             />
         </Grid>
-        <Grid item xs={12} md={8} lg={9}>
+        <Grid item xs={12} md={8} lg={6}>
           <div className={classes.desc}>
             <div>
               <h2>{beer.product.name}</h2>
               <p>{beer.full_description}</p>
-            </div>
-            <div className={classes.price}>
-              <Typography className={classes.priceFont} component="span" align="center">
-                9,99zł
-              </Typography>
             </div>
           </div>
           <div className={clsx(classes.producer)}>
             <Typography variant="h5" component="p">
               Producent: jakisproducent
             </Typography>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={12} lg={3}>
+          <div className={classes.prices}>
+            <Button className={classes.lowestPrice} variant="contained">
+              {beer.product.prices[0].price_now}
+            </Button>
+            <Button className={classes.regularPrice} variant="contained" color="secondary">
+              {beer.product.basic_price}
+            </Button>
+            <Button className={classes.highestPrice} variant="contained">
+              {beer.product.prices[beer.product.prices.length - 1].price_now}
+            </Button>
           </div>
         </Grid>
 

@@ -10,7 +10,7 @@
     - zespół Prismy aktualnie pracuje nad tym jak rozwiązać ten problem: https://github.com/prisma/prisma/issues/4571
     - aktualne obejście problemu wygląda tak:
         1. nie zapisuje historii migracji w folderze, robię po prostu  `prisma db push --preview-feature` 
-        2. robię migrację, ale na lokalnej bazie danych, a potem zmieniam ustawienia środowiskowe (.env) na hostowaną bazę danych i używam komendy `migrate resolve --applied "{{NAZWA FOLDERU OSTATNIEJ MIGRACJI}}" --preview-feature`
+        2. robię migrację, ale na lokalnej bazie danych, a potem zmieniam ustawienia środowiskowe (.env) na hostowaną bazę danych i używam komendy `prisma migrate resolve --applied "{{NAZWA FOLDERU OSTATNIEJ MIGRACJI}}" --preview-feature`
 - Postgres:
     1. zainstaluj lokalnie psql
     2. wejdź w powłokę (win+S)'run' - masz tutaj dane do DATABASE_URL

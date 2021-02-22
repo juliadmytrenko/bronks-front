@@ -8,9 +8,18 @@ export const getBeer = async (slug: string) => {
             product_slug: slug
         },
         include: {
-            product: true,
+            product: {
+                include: {
+                    prices: {
+                        orderBy: {
+                            price_now: 'asc',
+                        },
+                    }
+                }
+            },
         }
     });
+
 
     const data = await JSON.parse(JSON.stringify(res)); // temporary solution: https://github.com/vercel/next.js/issues/11993#issuecomment-617916930
 

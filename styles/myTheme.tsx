@@ -4,7 +4,7 @@ export const paletteColorsDark = {
     primary: '#ffab00',
     light: 'floralwhite',
     contrastText: '#050505',
-    secondary: '#ffd600',
+    secondary: '#f6c101',
     error: '#E44C65',
     background: 'rgba(0, 0, 0, 0.6)',
     text: '#bbe1fa',
